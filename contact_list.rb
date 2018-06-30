@@ -25,7 +25,7 @@ def add_contact                                                     # Create a f
         end                                                         # We push "phone" variable into the contact hash "phone_numbers" array
     end
 
-    return contact
+    return contact                              # We are returning a "hash"
 end
 
 
@@ -36,4 +36,17 @@ answer = ""                                     # Empty stirng variable for prom
 while answer != "n"                             
     contact_list.push(add_contact())            # Use the .push() method to pass in the .add_contact() to add contact
     answer = ask("Add another? (y/n)")          # Prompt user if they want to add another contact
+end
+
+
+puts "---"                                              # Seperate contacts
+
+contact_list.each do |contact|                          # Iterate over our contact_list array
+    puts "Name : #{contact["name"]}"                    # Prints value of the hash key
+    if contact["phone_numbers"].size > 0                # Checks of there are phone number, will print them out if true
+        contact["phone_numbers"].each do |phone_number|  # Use the .each method to iterate over the phone number array
+            puts "Phone: #{phone_number}"               
+        end
+    end
+    puts "-----\n"                                      # Prints a line seperator for each contact
 end
